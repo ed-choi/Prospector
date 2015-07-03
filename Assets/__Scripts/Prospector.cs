@@ -9,6 +9,9 @@ public class Prospector : MonoBehaviour {
 	public Deck					deck;
 	public TextAsset			deckXML;
 
+	public Layout layout;
+	public TextAsset layoutXML;
+
 	void Awake(){
 		S = this;
 	}
@@ -16,6 +19,11 @@ public class Prospector : MonoBehaviour {
 	void Start() {
 		deck = GetComponent<Deck> ();
 		deck.InitDeck (deckXML.text);
+		Deck.Shuffle(ref deck.cards); // This shuffles the deck
+		// The ref keyword passes a reference to deck.cards, which allows
+		// deck.cards to be modified by Deck.Shuffle()
+		layout = GetComponent<Layout>(); // Get the Layout
+		layout.ReadLayout(layoutXML.text); // Pass LayoutXML to it
 	}
 
 }
