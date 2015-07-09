@@ -537,5 +537,5 @@ public class Easing {
 		
 		return( u2 );
 	}
-	
+
 }
